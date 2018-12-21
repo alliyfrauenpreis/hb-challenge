@@ -1,7 +1,7 @@
 // Import from react
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 
 // Import scss
 import styles from './hello-world.scss';
