@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.png';
 import './App.css';
 import {createStore} from 'redux'
@@ -13,6 +14,7 @@ import removeTodo from './scripts/containers/todo/removeTodo'
 let store = createStore(todoApp, '');
 
 class App extends Component {
+
   render() {
     return (
       <div className="app">
@@ -27,4 +29,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = function(state) {
+  return {
+    todos: state.todos,
+  }
+}
+
+export default connect(mapStateToProps)(App);
