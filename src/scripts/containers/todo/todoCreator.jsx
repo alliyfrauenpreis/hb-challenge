@@ -17,7 +17,8 @@ class ToDoCreator extends Component {
 	}
 
 	addTodoItem(){
-		console.log(this.state.input);
+		console.log("Input:" + this.state.input);
+		console.log("Current todos:");
 		console.log(store.getState().todos);
 		store.dispatch(addTodo({text: this.state.input}));
 	}

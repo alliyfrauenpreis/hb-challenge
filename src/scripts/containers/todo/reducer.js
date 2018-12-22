@@ -5,9 +5,11 @@ import removeTodo from './removeTodo'
 let idCounter = 0;
 
 const initial = {
-	todos: [ {text: 'First item', id: idCounter}]
+	todos: [ {text: 'First item', id: idCounter}, {text: 'Second item', id: idCounter+1}]
 }
  
+idCounter += 1;
+
 function todoApp(state = initial, action) {
 
 	if (action.type == 'ADD_TODO') {
@@ -26,9 +28,11 @@ function todoApp(state = initial, action) {
 
 		let ID = action.input.id;
 
-		console.log(ID)
+		console.log("ID to remove is " + ID)
+		console.log("Before removal: ");
 		console.log(state);
 		state.todos.splice(ID,1);
+		console.log("After removal: ");
 		console.log(state);
 
 	} else {
