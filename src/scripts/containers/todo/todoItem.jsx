@@ -13,8 +13,7 @@ class ToDoItem extends Component {
 		this.state = {
 			checked: false,
 			hidden: false,
-			content: props.text,
-			id: 0
+			content: props.text
 		};
 	}
 
@@ -23,8 +22,9 @@ class ToDoItem extends Component {
 	}
 
 	remove(){
-		// this.props.dispatch(removeTodo({id: this.state.id}));
 		this.setState({ hidden: !this.state.hidden });
+		// This method resulted in some unexpected behaviors.
+		// this.props.dispatch(removeTodo({content: this.state.content}));
 	}
 
 	render() {

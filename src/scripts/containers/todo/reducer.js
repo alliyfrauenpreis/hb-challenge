@@ -5,12 +5,10 @@ import removeTodo from './removeTodo'
 let idCounter = 0;
 
 const initial = {
-	todos: [ {text: 'First item', id: idCounter}, {text: 'Second item', id: idCounter+1}]
+	todos: [ {text: 'First item', id: idCounter}]
 }
- 
-idCounter += 1;
 
-function todoApp(state = initial, action) {
+function todoApp(state, action) {
 
 	if (action.type == 'ADD_TODO') {
 		let text = action.input.text;
@@ -26,14 +24,20 @@ function todoApp(state = initial, action) {
 		});
 	} else if (action.type == 'REMOVE_TODO') {
 
-		let ID = action.input.id;
+		let content = action.input.content;
+		let index = 0;
+		for (var item in state.todos) {
+			if(state.todos[item].text == content) {
+				index = item;
+			}
+		}
 
-		console.log("ID to remove is " + ID)
-		console.log("Before removal: ");
-		console.log(state);
-		state.todos.splice(ID,1);
-		console.log("After removal: ");
-		console.log(state);
+		var edited = [...state.todos];
+		edited.splice(index,1);
+
+		return Object.assign({}, state, {
+			todos: edited
+		});
 
 	} else {
 		return initial;
