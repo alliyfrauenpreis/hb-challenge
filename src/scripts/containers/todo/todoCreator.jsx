@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import todoApp from './reducer'
-import addTodo from './actions'
-import removeTodo from './actions'
+import addTodo from './addTodo'
+import removeTodo from './removeTodo'
 const store = createStore(todoApp, '');
 
 class ToDoCreator extends Component {
@@ -18,7 +18,7 @@ class ToDoCreator extends Component {
 
 	addTodoItem(){
 		console.log(this.state.input);
-		console.log(store.getState());
+		console.log(store.getState().todos);
 		store.dispatch(addTodo({text: this.state.input}));
 	}
 
@@ -29,8 +29,8 @@ class ToDoCreator extends Component {
 	render() {
 		return (
 			<div id="creator">
-					<label> New to-do: </label>
-					<input type="text" onChange={this.change.bind(this)}/>
+				<label> New to-do: </label>
+				<input type="text" onChange={this.change.bind(this)}/>
 				<button onClick={this.addTodoItem.bind(this)}>Add</button>
 			</div>
 		)
