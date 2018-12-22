@@ -5,7 +5,7 @@ import {createStore} from 'redux'
 import todoApp from './reducer'
 import addTodo from './addTodo'
 import removeTodo from './removeTodo'
-const store = createStore(todoApp, '');
+import { connect } from 'react-redux';
 
 class ToDoCreator extends Component {
 
@@ -17,10 +17,10 @@ class ToDoCreator extends Component {
 	}
 
 	addTodoItem(){
-		console.log("Input:" + this.state.input);
-		console.log("Current todos:");
-		console.log(store.getState().todos);
-		store.dispatch(addTodo({text: this.state.input}));
+		// console.log("Input:" + this.state.input);
+		// console.log("Current todos:");
+		// console.log(store.getState().todos);
+		this.props.dispatch(addTodo({text: this.state.input}));
 	}
 
 	change(event){
@@ -38,4 +38,9 @@ class ToDoCreator extends Component {
 	}
 }
 
-export default ToDoCreator;
+const mapStateToProps = function(state) {
+  return {
+    todos: state.todos,
+  }
+}
+export default connect()(ToDoCreator);
