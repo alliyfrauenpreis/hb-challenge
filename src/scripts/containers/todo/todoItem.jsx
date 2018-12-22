@@ -7,7 +7,7 @@ import {createStore} from 'redux'
 import styles from './todo.scss';
 import todoApp from './reducer'
 import removeTodo from './removeTodo'
-const store = createStore(todoApp, '');
+import { connect } from 'react-redux';
 
 class ToDoItem extends Component {
 
@@ -15,7 +15,7 @@ class ToDoItem extends Component {
 		super(props);
 		this.state = {
 			checked: false,
-			content: 'This is what a generic to-do looks like.',
+			content: props.text,
 			id: 0
 		};
 	}
@@ -25,7 +25,7 @@ class ToDoItem extends Component {
 	}
 
 	remove(){
-		store.dispatch(removeTodo({id: this.state.id}));
+		this.props.dispatch(removeTodo({id: this.state.id}));
 	}
 
 	render() {
@@ -43,4 +43,4 @@ class ToDoItem extends Component {
 	}
 }
 
-export default ToDoItem;
+export default connect()(ToDoItem);

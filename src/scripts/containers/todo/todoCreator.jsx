@@ -17,9 +17,7 @@ class ToDoCreator extends Component {
 	}
 
 	addTodoItem(){
-		// console.log("Input:" + this.state.input);
-		// console.log("Current todos:");
-		// console.log(store.getState().todos);
+		console.log("Input:" + this.state.input);
 		this.props.dispatch(addTodo({text: this.state.input}));
 	}
 
@@ -38,9 +36,4 @@ class ToDoCreator extends Component {
 	}
 }
 
-const mapStateToProps = function(state) {
-  return {
-    todos: state.todos,
-  }
-}
 export default connect()(ToDoCreator);
