@@ -2,9 +2,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
-
-// Import scss
-import styles from './todo.scss';
 import todoApp from './reducer'
 import removeTodo from './removeTodo'
 import { connect } from 'react-redux';
@@ -33,13 +30,11 @@ class ToDoItem extends Component {
 	render() {
 		return (
 			<div>
-				<p>
-					<div clas="todo-item" style= {{ textDecoration: this.state.checked? 'line-through' : '', display: this.state.hidden? 'none' : ''}}>
-						{this.state.content}
-						<button onClick={this.checkOff.bind(this)}>✓</button> 
-						<button onClick={this.remove.bind(this)}>✘</button> 
-					</div>
-				</p>
+				<div clas="todo-item" style= {{ textDecoration: this.state.checked? 'line-through' : '', display: this.state.hidden? 'none' : ''}}>
+					{this.state.content}
+					<button onClick={this.checkOff.bind(this)}>✓</button> 
+					<button onClick={this.remove.bind(this)}>✘</button> 
+				</div>
 			</div>
 		)
 	}
