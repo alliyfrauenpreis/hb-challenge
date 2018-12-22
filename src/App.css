@@ -1,4 +1,13 @@
 .app {
   text-align: center;
   padding: 50px;
+  margin: 50px auto;
+  background: #fadadd;
+  width: 50%;
+  min-width: 400px;
 }
+
+.hidden {
+	display: none;
+}
+

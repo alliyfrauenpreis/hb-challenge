@@ -20,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+          <h1>Basic To-Do App</h1>
       	  <ul>
     		    {this.props.todos.map(todo => (
     		      <ToDoItem {...todo}/>

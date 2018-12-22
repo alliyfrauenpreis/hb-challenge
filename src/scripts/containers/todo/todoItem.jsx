@@ -15,6 +15,7 @@ class ToDoItem extends Component {
 		super(props);
 		this.state = {
 			checked: false,
+			hidden: false,
 			content: props.text,
 			id: 0
 		};
@@ -25,14 +26,15 @@ class ToDoItem extends Component {
 	}
 
 	remove(){
-		this.props.dispatch(removeTodo({id: this.state.id}));
+		// this.props.dispatch(removeTodo({id: this.state.id}));
+		this.setState({ hidden: !this.state.hidden });
 	}
 
 	render() {
 		return (
 			<div>
 				<p>
-					<div clas="todo-item" style= {{ textDecoration: this.state.checked? 'line-through' : ''}}>
+					<div clas="todo-item" style= {{ textDecoration: this.state.checked? 'line-through' : '', display: this.state.hidden? 'none' : ''}}>
 						{this.state.content}
 						<button onClick={this.checkOff.bind(this)}>✓</button> 
 						<button onClick={this.remove.bind(this)}>✘</button> 
