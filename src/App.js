@@ -11,19 +11,21 @@ import todoApp from './scripts/containers/todo/reducer'
 import addTodo from './scripts/containers/todo/addTodo'
 import removeTodo from './scripts/containers/todo/removeTodo'
 
-let store = createStore(todoApp, '');
-
 class App extends Component {
+
+  constructor(props) {
+      super(props);
+  }
 
   render() {
     return (
       <div className="app">
       	  <ul>
-		    {store.getState().todos.map(todo => (
-		      <ToDoItem {...todo}/>
-		    ))}
-		  </ul>
-		<ToDoCreator/>
+    		    {this.props.todos.map(todo => (
+    		      <ToDoItem {...todo}/>
+    		    ))}
+    		  </ul>
+		  <ToDoCreator/>
       </div>
     );
   }
@@ -36,3 +38,4 @@ const mapStateToProps = function(state) {
 }
 
 export default connect(mapStateToProps)(App);
+
